@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem Hợp Đồng - Shinhan Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+        .header {
+            padding: 15px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #b3cde0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            height: 35px;
+        }
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            color: #0052cc;
+        }
+        .container {
+            max-width: 90%;
+            width: 100%;
+            margin: 0 auto;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px;
+                margin: 0 auto;
+            }
+        }
+        .nav-tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            margin-top: 0;
+            flex-wrap: nowrap;
+        }
+        .nav-tabs .nav-item {
+            flex: 1;
+            text-align: center;
+        }
+        .nav-tabs .nav-link {
+            background-color: #d3d3d3;
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 500;
+            font-size: 14px;
+            width: 100%;
+            margin: 0 5px;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #0033a0;
+            color: #ffffff;
+        }
+        .step-title {
+            color: #003087;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .contract-canvas {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border: 1px solid #b3cde0;
+            border-radius: 5px;
+            margin: 0 auto;
+            display: block;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .btn-primary {
+            background-color: #0033a0;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0052cc;
+        }
+        .btn-zoom {
+            background-color: #003087;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-weight: 500;
+            font-size: 14px;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-zoom:hover {
+            background-color: #0052cc;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #003087;
+            color: white;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        .footer-links a {
+            color: #b3cde0;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 5px;
+            padding: 8px;
+            background-color: #ffe6e6;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://shinhan.com.vn/public/themes/shinhan/img/logo-01.svg" alt="Shinhan Bank Logo" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+Shinhan';">
+        <div class="header-icons">
+            <i class="bi bi-search"></i>
+            <div class="dropdown">
+                <i class="bi bi-list" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">GIỚI THIỆU</a></li>
+                    <li><a class="dropdown-item" href="#">LỢI ÍCH</a></li>
+                    <li><a class="dropdown-item" href="#">GIẤY TỜ CẦN THIẾT</a></li>
+                    <li><a class="dropdown-item" href="#">ĐĂNG KÝ TRỰC TUYẾN</a></li>
+                    <li><a class="dropdown-item" href="#">XEM KẾT QUẢ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="divider-blue" style="margin: 0;">
+
+    <div class="container">
+        <ul class="nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="#">1. Nhập thông tin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">2. Xác thực và xử lý</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">3. Hoàn thành</a>
+            </li>
+        </ul>
+
+        <div id="step7" class="step-transition">
+            <h5 class="step-title">Xem Hợp Đồng</h5>
+            <canvas id="contractCanvas" class="contract-canvas"></canvas>
+            <div class="button-group">
+                <button type="button" class="btn-zoom" onclick="zoomIn()">Phóng To</button>
+                <button type="button" class="btn-zoom" onclick="zoomOut()">Thu Nhỏ</button>
+                <button type="button" class="btn-primary" onclick="downloadAsPDF()">Tải PDF</button>
+            </div>
+            <div class="button-group">
+                <a href="/vaytieudung/shinhanbank/pages/vi/step6.html" class="btn btn-primary">QUAY LẠI</a>
+                <button type="button" class="btn btn-primary" onclick="proceedToStep8()">BƯỚC KẾ TIẾP</button>
+            </div>
+            <div class="error-message" id="contractError"></div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-links">
+                <a href="#">Chính sách bảo mật</a> |
+                <a href="#">Điều khoản sử dụng</a> |
+                <a href="#">Chính sách Cookies</a> |
+                <a href="#">Miễn khoản từ chối liên kết bên ngoài</a> |
+                <a href="#">Hướng dẫn truy cập web</a> |
+                <a href="#">Sitemap</a>
+            </div>
+            <p class="mt-3">Trung tâm bảo mật | Demo Ngân hàng trực tuyến | Liên hệ | Trang Global Portal | Giới Thiệu</p>
+            <p>© 2015 SHINHAN BANK VIETNAM ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script>
+        let userData = {};
+        let scale = 1;
+        let contractImage = new Image();
+
+        function loadUserData() {
+            try {
+                const storedData = localStorage.getItem('userData');
+                if (storedData) {
+                    userData = JSON.parse(CryptoJS.AES.decrypt(storedData, 'shinhan-secret-key').toString(CryptoJS.enc.Utf8));
+                    console.log('Loaded userData:', userData);
+                }
+            } catch (error) {
+                console.error('Error parsing userData:', error);
+                $('#contractError').text('Lỗi tải dữ liệu hợp đồng. Vui lòng thử lại.').show();
+            }
+        }
+
+        function saveToLocalStorage() {
+            try {
+                const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(userData), 'shinhan-secret-key').toString();
+                localStorage.setItem('userData', encryptedData);
+                console.log('Saved userData:', userData);
+                return true;
+            } catch (error) {
+                console.error('Error saving userData:', error);
+                $('#contractError').text('Lỗi lưu dữ liệu hợp đồng. Vui lòng thử lại.').show();
+                return false;
+            }
+        }
+
+        function validateContractData() {
+            const canvasFields = [
+                { label: "Họ và Tên", value: userData.fullName || '', x: 50, y: 50 },
+                { label: "Số CMND/CCCD", value: userData.idNumber || '', x: 50, y: 80 },
+                { label: "Số tiền vay", value: userData.loanAmount ? `${parseInt(userData.loanAmount).toLocaleString('vi-VN')} VND` : '', x: 50, y: 110 },
+                { label: "Kỳ hạn vay", value: userData.loanTerm ? `${userData.loanTerm} tháng` : '', x: 50, y: 140 },
+                { label: "Lãi suất", value: userData.interestRate ? `${userData.interestRate}%/năm` : '', x: 50, y: 170 }
+            ];
+
+            let isValid = true;
+            canvasFields.forEach(field => {
+                if (!field.value) {
+                    $('#contractError').text(`Lỗi: Thiếu thông tin ${field.label} trong hợp đồng.`).show();
+                    isValid = false;
+                }
+                if (field.label === "Họ và Tên" && field.value !== userData.fullName) {
+                    field.value = userData.fullName;
+                }
+                if (field.label === "Số CMND/CCCD" && field.value !== userData.idNumber) {
+                    field.value = userData.idNumber;
+                }
+                if (field.label === "Số tiền vay" && field.value !== (userData.loanAmount ? `${parseInt(userData.loanAmount).toLocaleString('vi-VN')} VND` : '')) {
+                    field.value = userData.loanAmount ? `${parseInt(userData.loanAmount).toLocaleString('vi-VN')} VND` : '';
+                }
+                if (field.label === "Kỳ hạn vay" && field.value !== (userData.loanTerm ? `${userData.loanTerm} tháng` : '')) {
+                    field.value = userData.loanTerm ? `${userData.loanTerm} tháng` : '';
+                }
+                if (field.label === "Lãi suất" && field.value !== (userData.interestRate ? `${userData.interestRate}%/năm` : '')) {
+                    field.value = userData.interestRate ? `${userData.interestRate}%/năm` : '';
+                }
+            });
+            return { isValid, canvasFields };
+        }
+
+        function renderContract() {
+            const canvas = document.getElementById('contractCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.scale(scale, scale);
+
+            // Vẽ ảnh nền hợp đồng
+            contractImage.src = 'https://via.placeholder.com/800x600.png?text=Hợp+Đồng+Vay+Shinhan+Bank'; // URL giả lập
+            contractImage.onload = () => {
+                ctx.drawImage(contractImage, 0, 0, canvas.width / scale, canvas.height / scale);
+
+                ctx.font = '16px Roboto';
+                ctx.fillStyle = '#000000';
+
+                const { isValid, canvasFields } = validateContractData();
+                if (!isValid) return;
+
+                canvasFields.forEach(field => {
+                    ctx.fillText(`${field.label}: ${field.value}`, field.x / scale, field.y / scale);
+                });
+
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            };
+            contractImage.onerror = () => {
+                $('#contractError').text('Lỗi tải ảnh hợp đồng. Vui lòng thử lại.').show();
+            };
+        }
+
+        function zoomIn() {
+            scale = Math.min(scale + 0.1, 2);
+            renderContract();
+        }
+
+        function zoomOut() {
+            scale = Math.max(scale - 0.1, 0.5);
+            renderContract();
+        }
+
+        function downloadAsPDF() {
+            try {
+                const canvas = document.getElementById('contractCanvas');
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                const imgData = canvas.toDataURL('image/png');
+                doc.addImage(imgData, 'PNG', 10, 10, 190, 142);
+                doc.save('HopDongVay.pdf');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                $('#contractError').text('Lỗi khi tải PDF. Vui lòng thử lại.').show();
+            }
+        }
+
+        function proceedToStep8() {
+            userData.currentStep = 8;
+            saveToLocalStorage();
+            window.location.href = '/vaytieudung/shinhanbank/pages/vi/step8.html';
+        }
+
+        window.onload = function() {
+            loadUserData();
+            if (userData.currentStep < 7 || !userData.isApproved) {
+                window.location.href = `/vaytieudung/shinhanbank/pages/vi/step${userData.currentStep}.html`;
+                return;
+            }
+            renderContract();
+        };
+    </script>
+</body>
+</html>
