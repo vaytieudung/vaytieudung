@@ -650,7 +650,8 @@
                 localStorage.removeItem(testKey);
                 return true;
             } catch (e) {
-                console.error('LocalStorage quota exceeded');
+                console.error('LocalStorage quota exceeded:', e);
+                $('#storageError').text('Không đủ dung lượng lưu trữ. Vui lòng kiểm tra thiết bị.').show();
                 return false;
             }
         }
@@ -661,7 +662,6 @@
 
         function saveToLocalStorage() {
             if (!checkLocalStorageQuota()) {
-                $('#storageError').text('Không đủ dung lượng lưu trữ. Vui lòng kiểm tra thiết bị.').show();
                 return false;
             }
             try {
@@ -686,6 +686,7 @@
                 }
             } catch (error) {
                 console.error('Error loading userData from localStorage:', error);
+                $('#storageError').text('Lỗi tải dữ liệu. Vui lòng thử lại.').show();
             }
         }
 
@@ -706,6 +707,7 @@
                 console.log('Saved registeredIds to localStorage:', ids);
             } catch (error) {
                 console.error('Error saving registeredIds to localStorage:', error);
+                $('#storageError').text('Lỗi lưu danh sách ID. Vui lòng thử lại.').show();
             }
         }
 
@@ -757,6 +759,7 @@
             const idNumberRegex = /^\d{9,12}$/;
             const dateRegex = /^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
             const incomeRegex = /^\d+$/;
+            const accountNumberRegex = /^\d+$/;
 
             const requiredFields = [
                 { id: 'fullName', selector: '#fullName', label: 'Họ và Tên', regex: null },
@@ -782,7 +785,7 @@
                 { id: 'hasBadDebt', selector: '#hasBadDebt', label: 'Có nợ xấu', regex: null },
                 { id: 'hasHighDebt', selector: '#hasHighDebt', label: 'Có nợ chú ý', regex: null },
                 { id: 'accountHolderName', selector: '#accountHolderName', label: 'Tên chủ tài khoản', regex: null },
-                { id: 'accountNumber', selector: '#accountNumber', label: 'Số tài khoản', regex: /^\d+$/ },
+                { id: 'accountNumber', selector: '#accountNumber', label: 'Số tài khoản', regex: accountNumberRegex },
                 { id: 'bankName', selector: '#bankName', label: 'Tên ngân hàng', regex: null }
             ];
 
@@ -809,6 +812,7 @@
                     if (field.id === 'idNumber') errorMessage = 'Số định danh phải có 9-12 chữ số';
                     if (field.id === 'dob' || field.id === 'idIssueDate' || field.id === 'disbursementDate') errorMessage = 'Ngày phải có định dạng DD/MM/YYYY';
                     if (field.id === 'income') errorMessage = 'Thu nhập phải là số nguyên';
+                    if (field.id === 'accountNumber') errorMessage = 'Số tài khoản phải là số';
                     $(field.selector).next('.invalid-feedback').text(errorMessage);
                     isValid = false;
                     $('html, body').animate({
